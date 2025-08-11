@@ -1,0 +1,33 @@
+
+@font-face {
+    font-family: 'Asap';
+    src: url('./assets/fonts/Asap-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Asap';
+    src: url('./assets/fonts/Asap-Bold.ttf') format('truetype');
+}
+
+:root {
+    --primary-color: #0e1e30;
+    --secondary-color: #0f3029;
+    --background-color: #061122;
+    --text-color: #f5f7fa;
+    --font-size: 16px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Asap', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color)
+}
+
+header, footer {
+    background-color: var(--primary-color);
+    padding: 20px;
+    height: 250px;
+    display: flex;
+}
