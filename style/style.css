@@ -1,12 +1,12 @@
 
 @font-face {
     font-family: 'Asap';
-    src: url('./assets/fonts/Asap-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/static/Asap-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Asap';
-    src: url('./assets/fonts/Asap-Bold.ttf') format('truetype');
+    src: url('../assets/fonts/static/Asap-Bold.ttf') format('truetype');
 }
 
 :root {
