@@ -98,6 +98,50 @@ h1 {
     transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
+dialog {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.inner-dialog {
+    width: 50%;
+    height: calc(100% - 40px);
+    margin: auto;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dialog-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 10px;
+}
+.close, .next-image, .prev-image {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 2.25em;
+    cursor: pointer;
+}
+.close {
+    align-self: flex-end;
+    padding-top: 10px;
+}
+.next-image, .prev-image {
+    margin: 10px;
+    padding: 10px;
+}               
+.next-and-prev-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
 @media (max-width: 786px) {
     main {
         padding: 20px;
@@ -112,6 +156,16 @@ h1 {
     .img-div img {
         max-width: 112px;
         height: 112px;
+    }
+    .inner-dialog {
+        width: 70%;
+        padding: 0;
+    }
+}
+@media (max-width: 590px) {
+    .inner-dialog {
+        width: 90%;
+        height: calc(100% - 20px);
     }
 }
 

@@ -12,12 +12,12 @@
         <img src="./assets/icons/Fotogram_Logo.svg" alt="Logo Fotogram">
     </header>
 
-    <main>
+    <main id="mainContent">
         <h1>My Personal Flower Album</h1>
         <div id="imgDiv" class="img-div">
             <!-- Images will be dynamically inserted here by JavaScript.  -->
         </div>
-        <dialog class="dialog-content" id="dialogContent"></dialog>
+        <dialog class="dialog-content" id="dialogContent" onclick="closeDialogOnClickOutside(event)"></dialog>
     </main>
 
     <footer>

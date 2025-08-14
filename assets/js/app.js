@@ -1,6 +1,6 @@
 
 const imagesContainer = document.getElementById("imgDiv");
-const dialog = document.getElementById("dialog");
+const dialog = document.getElementById("dialogContent");
 
 let images = [
   "orangene Taglilie.jpg",
@@ -28,7 +28,6 @@ function displayImages() {
 }
 
 function openDialog(item) {
-  console.log(item.id, item);
   createDialog(item);
   dialog.showModal();
 }
@@ -36,16 +35,28 @@ function openDialog(item) {
 createDialog = (item) => {
   dialog.innerHTML = "";
   dialog.innerHTML += `
-      <button class="close" onclick="closeDialog()">&times;</button>
+  <div class="inner-dialog">
+      <button class="close" onclick="closeDialog()" aria-label="Ansicht Schließen">&times;</button>
       ${item.outerHTML}
-      <button class="next-image" id="prev" onclick="prevImage(${item.id})"><-</button>
-      <button class="next-image" id="next" onclick="nextImage(${item.id})">-></button>
-  `;
+      <div class="next-and-prev-buttons">
+        <button class="prev-image" id="prev" onclick="prevImage(${item.id})" aria-label="vorheriges Bild"><-</button>
+        <button class="next-image" id="next" onclick="nextImage(${item.id})" aria-label="nächstes Bild">-></button>
+      </div>
+  </div>`;
 }
 
+function closeDialogOnClickOutside(event) {
+  // Check if the click is outside the dialog content
+  if (event.target === dialog) {
+    closeDialog();
+  }
+}
 function closeDialog() {
-  dialog.close();
-  dialog.innerHTML = "";
+  // Check if the dialog is open before trying to close it
+  if (dialog.open) {
+    dialog.close();
+    dialog.innerHTML = "";
+  }
 }
 
 // showing next and previous image onclick
