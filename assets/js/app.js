@@ -1,4 +1,3 @@
-
 const imagesContainer = document.getElementById("imgDiv");
 const dialog = document.getElementById("dialogContent");
 
@@ -18,12 +17,33 @@ let images = [
 ];
 
 function displayImages() {
+  imagesContainer.innerHTML = ""; // Clear the container before adding images
+  // Loop through the images array and create img elements
   images.forEach((image, index) => {
     imagesContainer.innerHTML += `
       <img src="./assets/img/${image}" class="img-thumbnail" 
-      id="${index}"
-      onclick="openDialog(this)" alt="${image.slice(0, -4)}" />
+      id="${index}" tabindex="0" alt="${image.slice(0, -4)}" 
+     role="button"/>
     `;
+    createEventListenersForImages();
+  }); 
+}
+
+function createEventListenersForImages() {
+    const imgElements = imagesContainer.querySelectorAll("img");
+  console.log("imgElements:", imgElements);
+  // Add event listeners to each image for keyboard navigation and click events
+  imgElements.forEach((img) => {
+    img.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault(); 
+        console.log("Enter key pressed on image:", img);
+        openDialog(img);
+      }
+    });
+    img.addEventListener("click", () => {
+      openDialog(img);
+    });
   });
 }
 
@@ -43,7 +63,7 @@ createDialog = (item) => {
         <button class="next-image" id="next" onclick="nextImage(${item.id})" aria-label="nächstes Bild">-></button>
       </div>
   </div>`;
-}
+};
 
 function closeDialogOnClickOutside(event) {
   // Check if the click is outside the dialog content
@@ -61,19 +81,19 @@ function closeDialog() {
 
 // showing next and previous image onclick
 function nextImage(id) {
-let nextId = id + 1; 
+  let nextId = id + 1;
   if (id == images.length - 1) {
-  nextId = 0;
+    nextId = 0;
   }
   const nextImage = document.getElementById(nextId);
-createDialog(nextImage);
+  createDialog(nextImage);
 }
 
 function prevImage(id) {
-let prevId = id - 1; 
+  let prevId = id - 1;
   if (id == 0) {
-  prevId = images.length - 1;
+    prevId = images.length - 1;
   }
   const prevImage = document.getElementById(prevId);
-createDialog(prevImage);
+  createDialog(prevImage);
 }
