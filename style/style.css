@@ -74,7 +74,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-
 h1 {
     text-align: center;
     font-size: 3em;
@@ -105,7 +104,7 @@ h1 {
 
 dialog {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
 }
 .inner-dialog {
@@ -184,19 +183,30 @@ dialog {
         width: 70%;
         padding: 0;
     }
-    .close {
-        top: 0;
-    }
 }
 @media (max-width: 590px) {
     .inner-dialog {
-        width: 80%;
+        width: 90%;
         height: auto;
-        padding-top: 40px;
+        padding-top: 55px;
+    }
+    .close {
+        font-size: 1.75em;
+    }
+    .arrow {
+        width: 35px;
+        height: 35px;
     }
 }
 
 @media (max-width: 402px) {
+    .inner-dialog {
+        padding-top: 40px;
+    }
+    .inner-dialog img {
+        max-width: 100%;
+        max-height: 75vh;
+    }
     header img {
         width: 180px;
     }
