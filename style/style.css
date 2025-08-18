@@ -128,8 +128,13 @@ dialog {
     cursor: pointer;
 }
 .close {
+    position: absolute;
+    top: 10px;
     align-self: flex-end;
-    padding-top: 10px;
+    margin-top: 10px;
+    padding: 0 8px;
+    background-color: black;
+    border-radius: 50%;
 }
 .next-image, .prev-image {
     margin: 10px;
@@ -138,9 +143,22 @@ dialog {
 .next-and-prev-buttons {
     display: flex;
     justify-content: space-between;
+    align-items: end;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
+.arrow {
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 50% 50%, white 40%, var(--background-color) 41%);
+    border: 1px solid var(--background-color);
+    border-radius: 50%;
+}
+.prev {
+    transform: rotate(180deg);
+}
+
 
 @media (max-width: 786px) {
     main {
@@ -154,18 +172,22 @@ dialog {
         font-size: 2em;
     }
     .img-div img {
-        max-width: 112px;
+        width: 112px;
         height: 112px;
     }
     .inner-dialog {
         width: 70%;
         padding: 0;
     }
+    .close {
+        top: 0;
+    }
 }
 @media (max-width: 590px) {
     .inner-dialog {
-        width: 90%;
-        height: calc(100% - 20px);
+        width: 80%;
+        height: auto;
+        padding-top: 40px;
     }
 }
 
