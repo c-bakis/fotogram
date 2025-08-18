@@ -163,7 +163,11 @@ dialog {
     transform: rotate(180deg);
 }
 
-
+@media (max-width: 1080px) {
+    .inner-dialog {
+        width: 70%;
+    }
+}
 @media (max-width: 786px) {
     main {
         padding: 20px;
@@ -181,7 +185,7 @@ dialog {
     }
     .inner-dialog {
         width: 70%;
-        padding: 0;
+        padding-top: 40px;
     }
 }
 @media (max-width: 590px) {
