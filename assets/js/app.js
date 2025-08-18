@@ -20,13 +20,16 @@ function displayImages() {
   imagesContainer.innerHTML = ""; // Clear the container before adding images
   // Loop through the images array and create img elements
   images.forEach((image, index) => {
-    imagesContainer.innerHTML += `
+    imagesContainer.innerHTML += getNoteTemplate(image, index);
+    createEventListenersForImages();
+  }); 
+}
+function getNoteTemplate(image, index) {
+  return `
       <img src="./assets/img/${image}" class="img-thumbnail" 
       id="${index}" tabindex="0" alt="${image.slice(0, -4)}" 
      role="button"/>
-    `;
-    createEventListenersForImages();
-  }); 
+    ` ;
 }
 
 function createEventListenersForImages() {
@@ -37,7 +40,6 @@ function createEventListenersForImages() {
     img.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault(); 
-        console.log("Enter key pressed on image:", img);
         openDialog(img);
       }
     });
@@ -54,7 +56,11 @@ function openDialog(item) {
 
 let createDialog = (item) => {
   dialog.innerHTML = "";
-  dialog.innerHTML += `
+  dialog.innerHTML += getDialogTemplate(item);
+}     
+
+function getDialogTemplate(item) {
+  return `
   <div class="inner-dialog">
       <button class="close" onclick="closeDialog()" aria-label="Ansicht Schließen">&times;</button>
       ${item.outerHTML}
@@ -68,17 +74,19 @@ let createDialog = (item) => {
             alt="Next Image">
         </button>
       </div>
-  </div>`;
-};
+  </div>
+  `;
+}
 
+// Check if the click is outside the dialog content
 function closeDialogOnClickOutside(event) {
-  // Check if the click is outside the dialog content
   if (event.target === dialog) {
     closeDialog();
   }
 }
+
+// Check if the dialog is open before trying to close it
 function closeDialog() {
-  // Check if the dialog is open before trying to close it
   if (dialog.open) {
     dialog.close();
     dialog.innerHTML = "";
