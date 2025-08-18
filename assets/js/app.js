@@ -52,15 +52,21 @@ function openDialog(item) {
   dialog.showModal();
 }
 
-createDialog = (item) => {
+let createDialog = (item) => {
   dialog.innerHTML = "";
   dialog.innerHTML += `
   <div class="inner-dialog">
       <button class="close" onclick="closeDialog()" aria-label="Ansicht Schließen">&times;</button>
       ${item.outerHTML}
       <div class="next-and-prev-buttons">
-        <button class="prev-image" id="prev" onclick="prevImage(${item.id})" aria-label="vorheriges Bild"><-</button>
-        <button class="next-image" id="next" onclick="nextImage(${item.id})" aria-label="nächstes Bild">-></button>
+        <button class="prev-image" id="prev" onclick="prevImage(${item.id})" aria-label="vorheriges Bild">
+          <img src="./assets/icons/arrow.svg" aria-labelledby="next" class="arrow next" id="nextArrow" 
+            alt="Next Image">
+        </button>
+        <button class="next-image" id="next" onclick="nextImage(${item.id})" aria-label="nächstes Bild">
+          <img src="./assets/icons/arrow.svg" aria-labelledby="next" class="arrow prev" id="nextArrow" 
+            alt="Next Image">
+        </button>
       </div>
   </div>`;
 };
